@@ -2,14 +2,24 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.maxicredito</groupId>
-	<artifactId>datasource-extension-test</artifactId>
+	<artifactId>ds-test</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
-
+	<properties>
+		<deltaspike.version>1.2.1</deltaspike.version>
+		<weld.version>2.2.8.Final</weld.version>
+		<hsqldb.version>2.3.2</hsqldb.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.wildfly</groupId>
 			<artifactId>wildfly-naming</artifactId>
 			<version>8.2.0.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -40,6 +50,19 @@
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!--HIBERNATE LOGGER (log4j) -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.185</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -109,10 +132,31 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<properties>
-		<deltaspike.version>1.2.1</deltaspike.version>
-		<weld.version>2.2.8.Final</weld.version>
-		<hsqldb.version>2.3.2</hsqldb.version>
-	</properties>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>ar.com.synergian</groupId>
+				<artifactId>wagon-git</artifactId>
+				<version>0.2.4</version>
+			</extension>
+		</extensions>
+	</build>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>synergian-repo</id>
+			<url>https://raw.github.com/synergian/wagon-git/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>mvn-repo-releases</id>
+			<name>Release Repo</name>
+			<url>git:releases:/git@bitbucket.org:maxicredito/mvn-repo.git</url>
+		</repository>
+		<snapshotRepository>
+			<id>mvn-repo-snapshots</id>
+			<name>Snapshot Repo</name>
+			<url>git:snapshots://git@bitbucket.org:maxicredito/mvn-repo.git</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

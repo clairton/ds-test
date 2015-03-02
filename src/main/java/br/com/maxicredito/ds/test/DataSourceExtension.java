@@ -1,8 +1,7 @@
-package br.com.maxicredito.extension.test;
+package br.com.maxicredito.ds.test;
 
 import static java.lang.System.setProperty;
 import static javax.naming.Context.INITIAL_CONTEXT_FACTORY;
-import static org.hsqldb.jdbc.JDBCDataSourceFactory.createDataSource;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -16,14 +15,19 @@ import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.AfterDeploymentValidation;
 import javax.enterprise.inject.spi.BeforeBeanDiscovery;
 import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jboss.as.naming.InMemoryNamingStore;
 import org.jboss.as.naming.InitialContextFactory;
 import org.jboss.as.naming.NamingContext;
 
+/**
+ * Cria datasource Baseados no arquivo datasources.properties.
+ * 
+ * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ */
 public class DataSourceExtension implements
 		javax.enterprise.inject.spi.Extension {
 	private final Logger logger = LogManager.getLogger(getClass().getName());
@@ -55,20 +59,16 @@ public class DataSourceExtension implements
 				}
 			}
 			for (final String name : names) {
-				final Properties p = new Properties();
-				p.put("url", file.get(name + ".url"));
-				p.put("username", file.get(name + ".username"));
-				p.put("password", file.get(name + ".password"));
-				p.put("jndi", file.get(name + ".jndi"));
-				bind(p);
+				final BasicDataSource dataSource = new BasicDataSource();
+				dataSource.setDriverClassName(file.get(name + ".driver")
+						.toString());
+				dataSource.setUrl(file.get(name + ".url").toString());
+				dataSource.setUsername(file.get(name + ".username").toString());
+				dataSource.setPassword(file.get(name + ".password").toString());
+				context.bind(file.get(name + ".jndi").toString(), dataSource);
 			}
 
 		}
 	}
 
-	private void bind(final Properties properties) throws Exception {
-		final DataSource dataSource = createDataSource(properties);
-		final String name = properties.getProperty("jndi");
-		context.bind(name, dataSource);
-	}
 }

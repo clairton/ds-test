@@ -1,8 +1,7 @@
-package br.com.maxicredito.extension.test;
+package br.com.maxicredito.ds.test;
 
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.Hashtable;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,12 +16,11 @@ import org.junit.runner.RunWith;
 public class DataSourceExtensionTest {
 	private InitialContext context;
 	private final String dsName = "java:/jdbc/datasources/MyDS";
-	private final String dsName2 = "java:/jdbc/datasources/MyDS2";
+	private final String dsName2 = "jdbc/MyDS2";
 
 	@Before
 	public void setUp() throws NamingException {
-		final Hashtable<String, String> p = new Hashtable<String, String>();
-		context = new InitialContext(p);
+		context = new InitialContext();
 	}
 
 	@Test
@@ -31,7 +29,7 @@ public class DataSourceExtensionTest {
 		final Connection connection = ds.getConnection();
 		connection.setAutoCommit(Boolean.FALSE);
 		final Statement statement = connection.createStatement();
-		final String sql = "CREATE TABLE test(id integer)";
+		final String sql = "CREATE TABLE IF NOT EXISTs test(id integer)";
 		statement.execute(sql);
 		connection.commit();
 	}
@@ -42,7 +40,7 @@ public class DataSourceExtensionTest {
 		final Connection connection = ds.getConnection();
 		connection.setAutoCommit(Boolean.FALSE);
 		final Statement statement = connection.createStatement();
-		final String sql = "CREATE TABLE test(id integer)";
+		final String sql = "CREATE TABLE IF NOT EXISTs test(id integer)";
 		statement.execute(sql);
 		connection.commit();
 	}
