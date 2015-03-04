@@ -3,8 +3,10 @@ package br.com.maxicredito.ds.test;
 import java.sql.Connection;
 import java.sql.Statement;
 
+import javax.enterprise.inject.Produces;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import javax.transaction.TransactionManager;
 
@@ -14,7 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(CdiTestRunner.class)
-public class TestExtensionTest {
+public class ExtensionTest {
 	private InitialContext context;
 	private final String dsName = "java:/jdbc/datasources/MyDS";
 	private final String dsName2 = "jdbc/MyDS2";
@@ -23,6 +25,11 @@ public class TestExtensionTest {
 	@Before
 	public void setUp() throws NamingException {
 		context = new InitialContext();
+	}
+	
+	@Produces
+	public EntityManager getEntityManager(){
+		return null;
 	}
 
 	@Test

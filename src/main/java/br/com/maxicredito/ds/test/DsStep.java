@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.enterprise.inject.spi.AfterDeploymentValidation;
 import javax.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 
@@ -21,12 +20,11 @@ import org.apache.logging.log4j.Logger;
  * 
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
  */
-public class DsExtension extends Passo<AfterDeploymentValidation> implements
-		Extension {
+public class DsStep extends Step implements Extension {
 	private final Logger logger = LogManager.getLogger(getClass().getName());
 
 	@Override
-	public void executar() {
+	public void run() {
 		logger.debug("Criando do DataSources");
 		try {
 			final InitialContext context = new InitialContext();

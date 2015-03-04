@@ -28,6 +28,14 @@ Para usar com o hibernate adicionar na tag properties no persistence.xml:
 <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
 ```
 
+Também é necessário ter um producer para um EntityManager pois a extensão observa o evento ProcessProducer<?, EntityManager>, exemplo:
+```java
+@Produces
+public EntityManager getEntityManager(){
+	return null;
+}
+```
+
 
 Para usar será necessário adicionar os repositórios maven:
 

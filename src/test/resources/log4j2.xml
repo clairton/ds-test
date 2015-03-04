@@ -11,7 +11,14 @@
 		<Logger name="br.com.caelum" level="info" />
 		<Logger name="org.eclipse" level="info" />
 		<Logger name="org.apache.directory" level="info" />
+		<Logger name="hibernate" level="info" />
+		<Logger name="org.hibernate" level="info" />
+		<Logger name="weld" level="info" />
+		<Logger name="org.jboss.weld" level="info" />
 		<Root level="debug">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+		<Root level="info">
 			<AppenderRef ref="STDOUT" />
 		</Root>
 	</Loggers>

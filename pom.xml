@@ -37,12 +37,6 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-jpa-module-impl</artifactId>
-			<version>${deltaspike.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.myfaces.test</groupId>
 			<artifactId>myfaces-test22</artifactId>
 			<version>1.0.7</version>
@@ -53,12 +47,6 @@
 			<artifactId>myfaces-impl-test</artifactId>
 			<version>2.2.7</version>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.myfaces.core</groupId>
-			<artifactId>myfaces-api</artifactId>
-			<version>2.2.7</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>
@@ -74,9 +62,21 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-impl</artifactId>
+			<version>${deltaspike.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.core</groupId>
+			<artifactId>myfaces-api</artifactId>
+			<version>2.2.7</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
 			<artifactId>deltaspike-test-control-module-impl</artifactId>
 			<version>${deltaspike.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.deltaspike.cdictrl</groupId>
@@ -130,6 +130,12 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.1</version>
@@ -146,12 +152,6 @@
 			<artifactId>cdi-api</artifactId>
 			<version>1.1</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.0.Final</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<!--HIBERNATE LOGGER (log4j) -->
