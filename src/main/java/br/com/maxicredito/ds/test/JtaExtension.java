@@ -23,7 +23,7 @@ public class JtaExtension extends Passo<BeforeBeanDiscovery> implements
 
 	@Override
 	public void executar() {
-		logger.debug("Iniciando COntexto para Transação");
+		logger.debug("Iniciando Contexto para Transação");
 		setProperty("com.arjuna.ats.arjuna.objectstore.objectStoreDir", "target/PutObjectStoreDirHere");
 		setProperty("ObjectStoreEnvironmentBean.objectStoreDir", "target/objectStoreDir");
 		try {

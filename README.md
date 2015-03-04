@@ -19,6 +19,16 @@ def.driver=org.h2.Driver
 def.url=jdbc:h2:~/test
 ```
 
+Para usar com o eclipselink adicionar na tag properties no persistence.xml:
+```xml
+<property name="eclipselink.target-server" value="JBoss"/>
+```
+Para usar com o hibernate adicionar na tag properties no persistence.xml:
+```xml
+<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+```
+
+
 Para usar será necessário adicionar os repositórios maven:
 
 ```xml
