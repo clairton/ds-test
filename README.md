@@ -1,4 +1,5 @@
-# Extensão CDI que Cria DataSources para serem usando nos testes
+#ds-test [![Build Status](https://travis-ci.org/clairton/ds-test.svg?branch=master)](https://travis-ci.org/clairton/ds-test)
+Extensão CDI que Cria DataSources para serem usando nos testes
 
 Necessita cria um arquivo datasources.properties em src/test/resources
 
