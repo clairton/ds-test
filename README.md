@@ -1,4 +1,4 @@
-#ds-test [![Build Status](https://travis-ci.org/clairton/ds-test.svg?branch=master)](https://travis-ci.org/clairton/ds-test)
+#ds-test[![Build Status](https://drone.io/github.com/clairton/ds-test/status.png)](https://drone.io/github.com/clairton/ds-test/latest)
 Extensão CDI que Cria DataSources para serem usando nos testes
 
 Necessita cria um arquivo datasources.properties em src/test/resources
