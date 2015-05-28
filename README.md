@@ -1,4 +1,5 @@
-# Extensão CDI que Cria DataSources para serem usando nos testes
+#ds-test[![Build Status](https://drone.io/github.com/clairton/ds-test/status.png)](https://drone.io/github.com/clairton/ds-test/latest)
+Extensão CDI que Cria DataSources para serem usando nos testes
 
 Necessita cria um arquivo datasources.properties em src/test/resources
 
