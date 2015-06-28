@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
  * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
  */
 public class DsStep extends Step implements Extension {
-	private final Logger logger = LogManager.getLogger(getClass().getName());
+	private final Logger logger = LogManager.getLogger(getClass());
 
 	@Override
 	public void run() {
@@ -38,22 +38,18 @@ public class DsStep extends Step implements Extension {
 				file.load(stream);
 				final Set<String> names = new HashSet<String>();
 				for (final Entry<Object, Object> entry : file.entrySet()) {
-					if (entry.getValue().toString()
-							.equalsIgnoreCase("datasource")) {
+					final String value = entry.getValue().toString();
+					if (value.equalsIgnoreCase("datasource")) {
 						names.add(entry.getKey().toString());
 					}
 				}
 				for (final String name : names) {
 					final BasicDataSource dataSource = new BasicDataSource();
-					dataSource.setDriverClassName(file.get(name + ".driver")
-							.toString());
+					dataSource.setDriverClassName(file.get(name + ".driver").toString());
 					dataSource.setUrl(file.get(name + ".url").toString());
-					dataSource.setUsername(file.get(name + ".username")
-							.toString());
-					dataSource.setPassword(file.get(name + ".password")
-							.toString());
-					context.bind(file.get(name + ".jndi").toString(),
-							dataSource);
+					dataSource.setUsername(file.get(name + ".username").toString());
+					dataSource.setPassword(file.get(name + ".password").toString());
+					context.bind(file.get(name + ".jndi").toString(), dataSource);
 				}
 			}
 		} catch (final Exception e) {

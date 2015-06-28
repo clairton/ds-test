@@ -13,12 +13,13 @@ import org.apache.logging.log4j.Logger;
 import com.arjuna.ats.jta.common.JTAEnvironmentBean;
 import com.arjuna.ats.jta.utils.JNDIManager;
 
-public class JtaStep extends Step implements
-		Extension {
-	private final Logger logger = LogManager.getLogger(getClass().getName());
+public class JtaStep extends Step implements Extension {
+	private final Logger logger = LogManager.getLogger(getClass());
 
-	private final String[] jndis = new String[] { "java:/TransactionManager",
-			"java:/comp/TransactionManager" };
+	private final String[] jndis = new String[] {
+		"java:/TransactionManager",
+		"java:/comp/TransactionManager"
+	};
 
 	@Override
 	public void run() {
@@ -29,8 +30,7 @@ public class JtaStep extends Step implements
 			final InitialContext context = new InitialContext();
 			try {
 				context.createSubcontext("jboss");
-			} catch (final NameAlreadyBoundException e) {
-			}
+			} catch (final NameAlreadyBoundException e) {}
 			final JTAEnvironmentBean bean = getJTAEnvironmentBean();
 			bean.setTransactionManagerJNDIContext("java:/jboss/TransactionManager");
 			JNDIManager.bindJTAImplementations(context);
