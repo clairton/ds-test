@@ -11,7 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Extension implements javax.enterprise.inject.spi.Extension {
-	private final Logger logger = LogManager.getLogger(getClass());
+	private static final Logger logger = LogManager.getLogger(Extension.class);
 	private final List<Step> steps = new LinkedList<Step>();
 	
 	public Extension() {
