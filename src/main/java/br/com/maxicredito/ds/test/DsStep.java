@@ -49,7 +49,8 @@ public class DsStep extends Step implements Extension {
 					dataSource.setUrl(file.get(name + ".url").toString());
 					dataSource.setUsername(file.get(name + ".username").toString());
 					dataSource.setPassword(file.get(name + ".password").toString());
-					context.bind(file.get(name + ".jndi").toString(), dataSource);
+					final String jndi = file.get(name + ".jndi").toString();
+					context.bind(jndi, dataSource);
 				}
 			}
 		} catch (final Exception e) {

@@ -20,6 +20,7 @@ public class ExtensionTest {
 	private InitialContext context;
 	private final String dsName = "java:/jdbc/datasources/MyDS";
 	private final String dsName2 = "jdbc/MyDS2";
+	private final String dsNameApp = "java:/app/env/jdbc/datasources/MyDS";
 	private final String tmName = "java:/comp/TransactionManager";
 
 	@Before
@@ -35,6 +36,17 @@ public class ExtensionTest {
 	@Test
 	public void test() throws Exception {
 		final DataSource ds = (DataSource) context.lookup(dsName);
+		final Connection connection = ds.getConnection();
+		connection.setAutoCommit(Boolean.FALSE);
+		final Statement statement = connection.createStatement();
+		final String sql = "CREATE TABLE IF NOT EXISTs test(id integer)";
+		statement.execute(sql);
+		connection.commit();
+	}
+	
+	@Test
+	public void testApp() throws Exception {
+		final DataSource ds = (DataSource) context.lookup(dsNameApp);
 		final Connection connection = ds.getConnection();
 		connection.setAutoCommit(Boolean.FALSE);
 		final Statement statement = connection.createStatement();
