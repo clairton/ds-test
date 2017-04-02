@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Cria datasource Baseados no arquivo datasources.properties.
  * 
- * @author Clairton Rodrigo Heinzen<clairton.rodrigo@gmail.com>
+ * @author Clairton Rodrigo Heinzen
  */
 public class DsStep extends Step implements Extension {
 	private final Logger logger = LogManager.getLogger(getClass());
