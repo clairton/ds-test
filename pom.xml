@@ -30,9 +30,9 @@
 		</developer>
 	</developers>
 	<properties>
-		<hsqldb.version>2.3.3</hsqldb.version>
-		<deltaspike.version>1.7.1</deltaspike.version>
-		<weld.version>2.4.0.Final</weld.version>
+		<hsqldb.version>2.4.0</hsqldb.version>
+		<deltaspike.version>1.7.2</deltaspike.version>
+		<weld.version>2.4.7.Final</weld.version>
 	</properties>
 	<dependencies>
 		<dependency>
