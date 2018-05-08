@@ -38,14 +38,8 @@
 		<dependency>
 			<groupId>org.wildfly</groupId>
 			<artifactId>wildfly-naming</artifactId>
-			<version>10.1.0.Final</version>
+			<version>12.0.0.Final</version>
 			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -115,59 +109,21 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
-			<artifactId>weld-se</artifactId>
-			<version>${weld.version}</version>
-			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-core</artifactId>
 			<version>${weld.version}</version>
 			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<!-- JTA implementation -->
 		<dependency>
 			<groupId>org.jboss.narayana.jta</groupId>
 			<artifactId>narayana-jta</artifactId>
-			<version>5.3.5.Final</version>
+			<version>5.8.1.Final</version>
 			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logmanager</groupId>
-					<artifactId>jboss-logmanager</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
-		<!-- JBoss transaction SPI. Required by JTA 1.2 implementation -->
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jboss-transaction-spi</artifactId>
-			<version>7.5.0.Final</version>
-			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.jboss.logging</groupId>
-					<artifactId>jboss-logging-spi</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- JBoss logging. Required by JTA 1.2 implementation -->
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
-			<version>3.3.0.Final</version>
+			<version>7.6.0.Final</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
