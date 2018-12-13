@@ -5,7 +5,7 @@
 	<artifactId>ds-test</artifactId>
 	<name>ds-test</name>
 	<description>A simples to create datasources in tests</description>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<url>https://github.com/clairton/ds-test</url>
 	<scm>
 		<connection>scm:git:git@github.com:clairton/ds-test.git</connection>
@@ -143,6 +143,12 @@
 			<artifactId>log4j-1.2-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.0</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.enterprise</groupId>
