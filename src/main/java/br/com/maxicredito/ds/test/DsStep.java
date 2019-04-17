@@ -1,5 +1,7 @@
 package br.com.maxicredito.ds.test;
 
+import static java.util.logging.Level.FINE;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
@@ -7,13 +9,12 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Cria datasource Baseados no arquivo datasources.properties.
@@ -21,11 +22,11 @@ import org.apache.logging.log4j.Logger;
  * @author Clairton Rodrigo Heinzen
  */
 public class DsStep extends Step implements Extension {
-	private final Logger logger = LogManager.getLogger(getClass());
+	private static final Logger logger = Logger.getLogger(DsStep.class.getName());
 
 	@Override
 	public void run() {
-		logger.debug("Criando do DataSources");
+		logger.log(FINE, "Criando do DataSources");
 		try {
 			final InitialContext context = new InitialContext();
 			final String fileName = "datasources.properties";
