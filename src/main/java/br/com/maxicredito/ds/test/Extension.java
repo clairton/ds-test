@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.enterprise.event.Observes;
-import javax.enterprise.inject.spi.AfterBeanDiscovery;
+import javax.enterprise.inject.spi.BeforeBeanDiscovery;
 
 public class Extension implements javax.enterprise.inject.spi.Extension {
 	private static final Logger logger = Logger.getLogger(Extension.class.getName());
@@ -21,7 +21,7 @@ public class Extension implements javax.enterprise.inject.spi.Extension {
 		}
 	};
 
-	public void run(@Observes final AfterBeanDiscovery abd) {
+	public void run(@Observes final BeforeBeanDiscovery event) {
 		logger.log(FINE, "Iniciando criação de JNDI Server, DataSources e Contexto JTA");
 		for (final Step step : steps) {
 			step.run();

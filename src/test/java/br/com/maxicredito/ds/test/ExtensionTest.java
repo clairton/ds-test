@@ -5,25 +5,25 @@ import static java.lang.Boolean.FALSE;
 import java.sql.Connection;
 import java.sql.Statement;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import javax.transaction.TransactionManager;
 
-import org.jboss.weld.junit5.EnableWeld;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-@EnableWeld
 public class ExtensionTest {
-	private InitialContext context;
 	private final String dsName = "java:/jdbc/datasources/MyDS";
 	private final String dsName2 = "jdbc/MyDS2";
 	private final String dsNameApp = "java:/app/env/jdbc/datasources/MyDS";
 	private final String tmName = "java:/comp/TransactionManager";
-	
-	@Before
-	public void setUp() throws NamingException {
+
+	private static Context context;
+
+	@BeforeClass
+	public static void setUp() throws NamingException {
 		new Extension().run(null);
 		context = new InitialContext();
 	}
