@@ -11,9 +11,12 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import javax.transaction.TransactionManager;
 
+import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+@RunWith(CdiTestRunner.class)
 public class ExtensionTest {
 	private final String dsName = "java:/jdbc/datasources/MyDS";
 	private final String dsName2 = "jdbc/MyDS2";
@@ -24,7 +27,6 @@ public class ExtensionTest {
 
 	@BeforeClass
 	public static void setUp() throws NamingException {
-		new Extension().run(null);
 		context = new InitialContext();
 	}
 
