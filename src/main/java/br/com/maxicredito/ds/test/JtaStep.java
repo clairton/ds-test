@@ -10,6 +10,7 @@ import javax.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 import javax.naming.NameAlreadyBoundException;
 
+import com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionSynchronizationRegistryImple;
 import com.arjuna.ats.jta.common.JTAEnvironmentBean;
 import com.arjuna.ats.jta.utils.JNDIManager;
 
@@ -17,6 +18,7 @@ public class JtaStep extends Step implements Extension {
 	private static final Logger logger = Logger.getLogger(JtaStep.class.getName());
 
 	private final String[] jndis = new String[] { "java:/TransactionManager", "java:/comp/TransactionManager" };
+	private final String jndi = "java:/comp/TransactionSynchronizationRegistry";
 
 	@Override
 	public void run() {
@@ -36,7 +38,13 @@ public class JtaStep extends Step implements Extension {
 				try {
 					context.bind(jndi, bean.getTransactionManager());
 				} catch (final NameAlreadyBoundException e) {
+					e.printStackTrace();
 				}
+			}
+			try {
+				context.bind(jndi, new TransactionSynchronizationRegistryImple());
+			} catch (final NameAlreadyBoundException e) {
+				e.printStackTrace();
 			}
 		} catch (final Exception e) {
 			throw new RuntimeException(e);
