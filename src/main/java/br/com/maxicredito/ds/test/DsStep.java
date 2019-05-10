@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.zaxxer.hikari.HikariDataSource;
 
 /**
  * Cria datasource Baseados no arquivo datasources.properties.
@@ -45,9 +45,9 @@ public class DsStep extends Step implements Extension {
 					}
 				}
 				for (final String name : names) {
-					final BasicDataSource dataSource = new BasicDataSource();
+					final HikariDataSource dataSource = new HikariDataSource();
 					dataSource.setDriverClassName(file.get(name + ".driver").toString());
-					dataSource.setUrl(file.get(name + ".url").toString());
+					dataSource.setJdbcUrl(file.get(name + ".url").toString());
 					dataSource.setUsername(file.get(name + ".username").toString());
 					dataSource.setPassword(file.get(name + ".password").toString());
 					final String jndi = file.get(name + ".jndi").toString();

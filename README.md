@@ -42,6 +42,6 @@ public EntityManager getEntityManager(){
 <dependency>
     <groupId>br.eti.clairton</groupId>
 	<artifactId>ds-test</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>X.X.X</version>
 </dependency>
 ```

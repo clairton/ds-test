@@ -2,11 +2,14 @@ package br.com.maxicredito.ds.test;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TransactionRequiredException;
 import javax.transaction.Transactional;
 
+
+@Dependent
 public class Repository implements Serializable {
 	private static final long serialVersionUID = -3179335354498565442L;
 
