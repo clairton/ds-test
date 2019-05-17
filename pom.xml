@@ -6,7 +6,7 @@
 	<artifactId>ds-test</artifactId>
 	<name>ds-test</name>
 	<description>A simples to create datasources in tests</description>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 	<url>https://github.com/clairton/ds-test</url>
 	<scm>
 		<connection>scm:git:git@github.com:clairton/ds-test.git</connection>
@@ -72,6 +72,12 @@
 			<groupId>org.jboss</groupId>
 			<artifactId>jandex</artifactId>
 			<version>2.1.1.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.classfilewriter</groupId>
+			<artifactId>jboss-classfilewriter</artifactId>
+			<version>1.2.4.Final</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
